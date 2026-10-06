@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SKILLFORGE — Education & Skills</title>
+  <meta name="description" content="SKILLFORGE — Practical education and skills for the next generation.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #071321;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    :root {
+      --navy: #071321;
+      --navy2: #0b1d35;
+      --blue: #173d68;
+      --cyan: #28d7e8;
+      --teal: #72dce0;
+      --white: #ffffff;
+      --muted: #a9bacb;
+      --border: rgba(114, 220, 224, 0.18);
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(7, 19, 33, 0.88);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      height: 78px;
+      padding: 0 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: white;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      position: relative;
+    }
+
+    .brand-logo div {
+      position: absolute;
+      background: var(--cyan);
+    }
+
+    .shape-one {
+      width: 19px;
+      height: 19px;
+      top: 0;
+      left: 0;
+      border-radius: 0 100% 0 0;
+    }
+
+    .shape-two {
+      width: 12px;
+      height: 12px;
+      top: 4px;
+      right: 2px;
+      border-radius: 50%;
+    }
+
+    .shape-three {
+      width: 19px;
+      height: 19px;
+      bottom: 0;
+      right: 0;
+      border-radius: 0 0 100% 0;
+    }
+
+    .shape-four {
+      width: 12px;
+      height: 12px;
+      bottom: 4px;
+      left: 4px;
+      border-radius: 50%;
+    }
+
+    .brand span {
+      font-size: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #d8e6f1;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .login {
+      border: 1px solid var(--cyan);
+      padding: 10px 17px;
+      border-radius: 8px;
+    }
+
+    .apply {
+      background: linear-gradient(135deg, var(--cyan), var(--teal));
+      color: #06121f !important;
+      padding: 11px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 25px 100px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      right: -250px;
+      top: -200px;
+      background: radial-gradient(circle, rgba(40,215,232,0.16), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      left: -250px;
+      bottom: -250px;
+      background: radial-gradient(circle, rgba(114,220,224,0.10), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 70px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid rgba(40,215,232,0.3);
+      background: rgba(40,215,232,0.06);
+      color: var(--cyan);
+      padding: 7px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(50px, 7vw, 92px);
+      line-height: 0.95;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: var(--cyan);
+    }
+
+    .hero h2 {
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 400;
+      color: #dce8f2;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 23px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), var(--teal));
+      color: #06121f;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    /* HERO VISUAL */
+
+    .hero-visual {
+      position: relative;
+      height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .orb {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #163e68, #081727 65%);
+      border: 1px solid rgba(40,215,232,0.35);
+      box-shadow:
+        0 0 70px rgba(40,215,232,0.12),
+        inset 0 0 50px rgba(40,215,232,0.06);
+      position: relative;
+    }
+
+    .orb::before,
+    .orb::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(40,215,232,0.22);
+      border-radius: 50%;
+    }
+
+    .orb::before {
+      inset: 35px;
+    }
+
+    .orb::after {
+      inset: 75px;
+    }
+
+    .floating-card {
+      position: absolute;
+      background: rgba(10, 28, 49, 0.9);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
+
+    .card-one {
+      top: 40px;
+      left: 20px;
+    }
+
+    .card-two {
+      right: 0;
+      top: 145px;
+    }
+
+    .card-three {
+      left: 55px;
+      bottom: 35px;
+    }
+
+    .floating-card strong {
+      display: block;
+      color: var(--cyan);
+      font-size: 18px;
+    }
+
+    .floating-card small {
+      color: var(--muted);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 100px 25px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-label {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 52px);
+      margin-bottom: 15px;
+      letter-spacing: -1px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 45px;
+    }
+
+    /* PROGRAM */
+
+    .program {
+      background: #091827;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .program-box {
+      background: linear-gradient(135deg, #0d2845, #091827);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .program-box::after {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      right: -120px;
+      top: -120px;
+      border: 1px solid rgba(40,215,232,0.12);
+      border-radius: 50%;
+    }
+
+    .program-title {
+      font-size: 38px;
+      margin-bottom: 8px;
+    }
+
+    .program-subtitle {
+      color: var(--cyan);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .program-text {
+      color: var(--muted);
+    }
+
+    .years {
+      display: grid;
+      gap: 15px;
+    }
+
+    .year {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .year strong {
+      color: var(--cyan);
+    }
+
+    .year span {
+      display: block;
+      color: #d8e4ee;
+      font-size: 18px;
+      margin-top: 3px;
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card {
+      padding: 28px;
+      background: #0a1a2c;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(40,215,232,0.5);
+      box-shadow: 0 15px 40px rgba(40,215,232,0.06);
+    }
+
+    .skill-number {
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .skill-card h3 {
+      margin: 15px 0 8px;
+      font-size: 21px;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* HOW IT WORKS */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      border-left: 2px solid var(--cyan);
+      padding: 10px 20px 20px;
+    }
+
+    .step-number {
+      color: var(--cyan);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .step h3 {
+      margin: 8px 0;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+      background:
+        radial-gradient(circle at center, rgba(40,215,232,0.12), transparent 50%),
+        #071321;
+    }
+
+    .cta h2 {
+      font-size: clamp(36px, 6vw, 60px);
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 35px 25px;
+      background: #050e18;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer p {
+      color: #8294a7;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        height: 330px;
+      }
+
+      .program-box {
+        grid-template-columns: 1fr;
+        padding: 30px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .skills-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .orb {
+        width: 240px;
+        height: 240px;
+      }
+
+      .floating-card {
+        transform: scale(0.8);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <div class="nav-container">
+
+      <a href="#" class="brand">
+
+        <div class="brand-logo">
+          <div class="shape-one"></div>
+          <div class="shape-two"></div>
+          <div class="shape-three"></div>
+          <div class="shape-four"></div>
+        </div>
+
+        <span>SKILLFORGE</span>
+
+      </a>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#program">Build Your World</a>
+        <a href="#how">How It Works</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#" class="login">Student Login</a>
+        <a href="#apply" class="apply">Apply Now</a>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-container">
+
+      <div>
+
+        <div class="tag">
+          EDUCATION • SKILLS • FUTURE
+        </div>
+
+        <h1>
+          Build Your<br>
+          <span>World.</span>
+        </h1>
+
+        <h2>
+          Learn skills. Build ideas. Shape your future.
+        </h2>
+
+        <p>
+          SKILLFORGE is a practical learning platform designed to help
+          students develop real-world skills, creative thinking and
+          problem-solving abilities.
+        </p>
+
+        <div class="buttons">
+
+          <a href="#program" class="btn btn-primary">
+            Explore Programs →
+          </a>
+
+          <a href="#how" class="btn btn-secondary">
+            How It Works
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-visual">
+
+        <div class="orb"></div>
+
+        <div class="floating-card card-one">
+          <strong>LEARN</strong>
+          <small>Understand</small>
+        </div>
+
+        <div class="floating-card card-two">
+          <strong>BUILD</strong>
+          <small>Create something useful</small>
+        </div>
+
+        <div class="floating-card card-three">
+          <strong>IMPROVE</strong>
+          <small>Test. Learn. Grow.</small>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BUILD YOUR WORLD -->
+
+  <section class="program" id="program">
+
+    <div class="container">
+
+      <div class="section-label">
+        FLAGSHIP PROGRAM
+      </div>
+
+      <div class="program-box">
+
+        <div>
+
+          <h2 class="program-title">
+            BUILD YOUR WORLD
+          </h2>
+
+          <div class="program-subtitle">
+            A 3-Year Student Entrepreneurship Program
+          </div>
+
+          <p class="program-text">
+            A practical learning journey that helps students discover
+            problems, develop ideas, understand customers, learn money
+            basics, build solutions and test their ideas in the real world.
+          </p>
+
+          <br>
+
+          <a href="#" class="btn btn-primary">
+            Explore Program →
+          </a>
+
+        </div>
+
+
+        <div class="years">
+
+          <div class="year">
+            <strong>YEAR 01</strong>
+            <span>DISCOVER — Find Ideas</span>
+          </div>
+
+          <div class="year">
+            <strong>YEAR 02</strong>
+            <span>BUILD — Create Solutions</span>
+          </div>
+
+          <div class="year">
+            <strong>YEAR 03</strong>
+            <span>LAUNCH — Start & Grow</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="section-label">
+        WHAT YOU CAN LEARN
+      </div>
+
+      <h2 class="section-title">
+        Skills for the real world.
+      </h2>
+
+      <p class="section-description">
+        SKILLFORGE will bring practical learning experiences across
+        entrepreneurship, digital skills, communication, creativity
+        and more.
+      </p>
+
+
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <div class="skill-number">01</div>
+          <h3>Entrepreneurship</h3>
+          <p>
+            Learn how problems become opportunities and ideas become
+            useful solutions.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-number">02</div>
+          <h3>Creative Thinking</h3>
+          <p>
+            Develop ideas, explore possibilities and think beyond
+            obvious solutions.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-number">03</div>
+          <h3>Digital Skills</h3>
+          <p>
+            Build practical digital abilities for study, creativity
+            and future work.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-number">04</div>
+          <h3>Money Basics</h3>
+          <p>
+            Understand cost, price, revenue, profit and simple
+            budgeting.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-number">05</div>
+          <h3>Communication</h3>
+          <p>
+            Learn how to explain ideas, understand people and
+            communicate clearly.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-number">06</div>
+          <h3>Problem Solving</h3>
+          <p>
+            Identify real problems and create, test and improve
+            practical solutions.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HOW IT WORKS -->
+
+  <section id="how" class="program">
+
+    <div class="container">
+
+      <div class="section-label">
+        THE SKILLFORGE METHOD
+      </div>
+
+      <h2 class="section-title">
+        Learn by doing.
+      </h2>
+
+      <p class="section-description">
+        Our learning approach moves beyond memorisation and focuses
+        on understanding, creating, testing and improving.
+      </p>
+
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-number">01 — LEARN</div>
+          <h3>Understand</h3>
+          <p>
+            Learn concepts through clear lessons and real-world examples.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">02 — THINK</div>
+          <h3>Question</h3>
+          <p>
+            Ask questions, observe problems and explore different ideas.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">03 — BUILD</div>
+          <h3>Create</h3>
+          <p>
+            Turn your thinking into something useful and testable.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">04 — IMPROVE</div>
+          <h3>Make Better</h3>
+          <p>
+            Test, collect feedback and improve your solution.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="section-label">
+        ABOUT SKILLFORGE
+      </div>
+
+      <h2 class="section-title">
+        Education should prepare students for more than exams.
+      </h2>
+
+      <p class="section-description">
+        SKILLFORGE focuses on practical knowledge and skills that
+        students can understand, practise and apply. Our goal is to
+        make learning useful, engaging and connected to the real world.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="cta" id="apply">
+
+    <div class="container">
+
+      <div class="section-label">
+        START YOUR JOURNEY
+      </div>
+
+      <h2>
+        Ready to build your world?
+      </h2>
+
+      <p>
+        Explore SKILLFORGE programs and begin your practical learning journey.
+      </p>
+
+      <a href="#" class="btn btn-primary">
+        Apply to SKILLFORGE →
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="section-label">
+        GET IN TOUCH
+      </div>
+
+      <h2 class="section-title">
+        Contact SKILLFORGE
+      </h2>
+
+      <p class="section-description">
+        Questions about our programs? More information will be available
+        here as SKILLFORGE grows.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-container">
+
+      <p>
+        © 2026 SKILLFORGE. Education & Skills.
+      </p>
+
+      <p>
+        LEARN • THINK • BUILD • TEST • IMPROVE
+      </p>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
